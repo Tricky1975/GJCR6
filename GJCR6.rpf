@@ -1,0 +1,40 @@
+[rem]
+Generated file!
+
+Generated: 5/5/2018
+
+[vars]
+AUTHOR=Jeroen P. Broks
+EXE=GJCR
+JCRSIG=JCR6_ecfa0f3c8a9d577e7d1ee573bd703a3ce1cdeb04
+LINUX=YES
+LOVEVERSION=0.11.1
+MAC64=YES
+MACICON.DARWIN=/Volumes/Scyndi/Projects/Applications/Ryanna/GJCR6/GJCR.icns
+MAINSCRIPT=Script/Start.lua
+PACKAGE=JCR
+RELEASE.DARWIN=/Volumes/Scyndi/Releases/GJCR6
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/GJCR6/SRC/ASSETS'].AUTHOR=Jeroen P. Broks
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/GJCR6/SRC/ASSETS'].LICENSE=Unless explicitly stated otherwise in a readme.md file, the assets are licensed under a creative commons by attribute share-alike license!
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/GJCR6/SRC/ASSETS'].TYPE.DARWIN=ALL
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/GJCR6/SRC/SOURCECODE'].AUTHOR=Jeroen P. Broks
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/GJCR6/SRC/SOURCECODE'].LICENSE=Unless explictly noted in the source files, they are all licensed under a GNU General Public License. Except the files in the Libs/ folder, as none of them are part of this project, but merely merged in dependencies. Those files are mostly either zlib or MPL, please check the files themselves.
+SOURCE['/VOLUMES/SCYNDI/PROJECTS/APPLICATIONS/RYANNA/GJCR6/SRC/SOURCECODE'].TYPE.DARWIN=ALL
+TEST.DARWIN=/Volumes/Scyndi/Projects/Applications/Ryanna/GJCR6/Test
+TITLE=GJCR 6
+WIN32=YES
+WIN64=YES
+
+
+[List:LIBRARIES.DARWIN]
+/Volumes/Scyndi/Projects/Applications/Ryanna/Maneschijn
+/Volumes/Scyndi/Projects/Applications/Ryanna/RyannaLibs
+
+[List:BUILDMODES]
+ALL
+
+[List:SOURCES.DARWIN]
+/Volumes/Scyndi/Projects/Applications/Ryanna/GJCR6/src
+
+[List:ALIASES]
+
