@@ -22,4 +22,7 @@
 	to the project the exceptions are needed for.
 Version: 18.05.05
 ]]
+
+-- $USE libs/maneschijn
+
 -- content comes later --

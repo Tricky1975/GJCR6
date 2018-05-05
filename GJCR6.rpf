@@ -38,3 +38,12 @@ ALL
 
 [List:ALIASES]
 
+[List:CONFIG]
+window.width=1200
+window.height=800
+window.minwidth=800
+window.minheight=800
+window.resizable=true
+modules.joystick=false
+window.title="GJCR - The graphic JCR6 viewer"
+
