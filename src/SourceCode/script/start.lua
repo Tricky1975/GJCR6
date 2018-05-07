@@ -24,6 +24,7 @@ Version: 18.05.07
 ]]
 
 -- $USE libs/maneschijn
+-- $use script/accept
 -- $USE script/gui
 
 -- content comes later --

@@ -30,8 +30,47 @@ local gui = {
       w="100%",
       h="100%",
       texture="metal.png",
-      kids = {}
+      dbgid="metal background",
+      kids = {
+          logo={
+             kind='quad',x=0,y=0,
+             xwrap='clampzero',ywrap='clampzero',
+             texture='jcr.png',
+             -- 188x84
+             w="23.5%",h="10.5%",
+             kids={}
+          },
+          screens={
+             kind='pivot',
+             x="23.5%%",y=0,
+             w="76.5%%",
+             h="100%",
+             dbgid='screens',
+             kids={
+                dragonme = {
+                   kind='image',
+                   x='50%',y='50%',
+                   w="100%",h="100%",
+                   xwrap='clampzero',ywrap='clampzero',
+                   image='DragOnMe.png',
+                   hoth="c",hotv="c",
+                   dbgid="DragOnMe"
+                }
+             }             
+          }
+      }
       
 }
+guiscreens=gui.kids.screens.kids -- These are the "real" work screens
+
+
+function GoScreen(screen)
+   assert(guiscreens[screen],"Unknown screen: "..sval(screen))
+   for k,s in pairs(guiscreens) do
+       s.Visible=k==screen
+   end
+end
+GoScreen('dragonme')   
+
 
 CreateGadget(gui)
