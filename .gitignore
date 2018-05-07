@@ -7,6 +7,11 @@ MKL*
 # Compiled Lua sources
 luac.out
 
+# Eclipse shit
+.buildpath
+.project
+.settings
+
 # luarocks build files
 *.src.rock
 *.zip
