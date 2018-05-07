@@ -1,6 +1,6 @@
 --[[
-	JCR6 for LOVE
-	Main file
+	GJCR6
+	GUI initiation
 	
 	
 	
@@ -22,8 +22,16 @@
 	to the project the exceptions are needed for.
 Version: 18.05.07
 ]]
+local gui = {
 
--- $USE libs/maneschijn
--- $USE script/gui
+      kind='quad',
+      x=0,
+      y=0,
+      w="100%",
+      h="100%",
+      texture="metal.png",
+      kids = {}
+      
+}
 
--- content comes later --
+CreateGadget(gui)
