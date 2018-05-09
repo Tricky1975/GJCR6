@@ -69,7 +69,7 @@ local gui = {
 }
 guiscreens=gui.kids.screens.kids -- These are the "real" work screens
 boxes=guiscreens.fileviewer.kids
-boxes.files = { x=0,y="5%",h="80%",w="95%",kind="listbox",bg=0.05,br=0.05,b=0.05,alpha=.5,dbgid='Files of a JCR6 file',allowicons=true}
+boxes.files = { x=0,y="5%",h="80%",w="95%",kind="listbox",bg=0.05,br=0.05,bb=0.05,alpha=.5,dbgid='Files of a JCR6 file',allowicons=true}
 
 
 function GoScreen(screen)

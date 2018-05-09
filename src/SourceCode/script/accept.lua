@@ -28,6 +28,7 @@ Version: 18.05.09
 local debug = true
 
 local loading = LoadImage("LoadingAnalysing.png");HotCenter(loading)
+local ficon_directory=LoadImage("ficons/directory.png"); assert(ficon_directory and ficon_directory.images,"error in loading needed icon")
 
 function PutInList(d)
     -- locals
@@ -35,13 +36,24 @@ function PutInList(d)
     local addicon
     local havedirs={}
     
+    boxes.files:Clear()
     -- Directories
     for k,_ in spairs(wjcr.entries) do
-        local dir=ExtractDir(k)
-        if debug then print(string.char(27).."[33mFound dir:  "..string.char(27).."[0m"..dir) end
-        if not havedirs[dir] then 
-           havedirs[dir]=true
-           if debug then print(string.char(27).."[34mAdded dir:  "..string.char(27).."[0m"..dir) end
+        local fulldir=ExtractDir(k)
+        local sdir=path.SplitDir(fulldir)
+        local dir = ""
+        for sd in each(sdir) do
+            if #dir>0 then dir=dir.."/" end
+            dir=dir..sd
+            if debug then print(string.char(27).."[33mFound dir:  "..string.char(27).."[0m"..dir) end
+            if dir~="" and not havedirs[dir] then 
+               havedirs[dir]=true
+               --local pdir = left(dir,#dir-1) -- no longer needed
+               if ExtractDir(dir)==ud then  
+                  boxes.files:Add(StripDir(dir.."/"),ficon_directory)
+                  if debug then print(string.char(27).."[34mAdded dir:  "..string.char(27).."[0m"..dir) end
+               end
+           end
         end
     end    
     
