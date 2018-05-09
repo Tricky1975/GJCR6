@@ -57,8 +57,10 @@ local gui = {
                    dbgid="DragOnMe"
                 },
                 fileviewer = {
-                   kind='pivot',
-                   kids = {}
+                   kind='pivot',x=0,y=0,w="100%",h="100%",dbgid="File Viewer",
+                   kids = {
+                      -- The content is defined below
+                   }
                 }
              }             
           }
@@ -66,6 +68,8 @@ local gui = {
       
 }
 guiscreens=gui.kids.screens.kids -- These are the "real" work screens
+boxes=guiscreens.fileviewer.kids
+boxes.files = { x=0,y="5%",h="80%",w="95%",kind="listbox",bg=0.05,br=0.05,b=0.05,alpha=.5,dbgid='Files of a JCR6 file',allowicons=true}
 
 
 function GoScreen(screen)
@@ -78,3 +82,4 @@ GoScreen('dragonme')
 
 
 CreateGadget(gui)
+print(maneschijn_core.Tree()) -- I gotta know how things are going here. 

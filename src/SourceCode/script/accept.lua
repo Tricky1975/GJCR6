@@ -22,7 +22,44 @@
 	to the project the exceptions are needed for.
 Version: 18.05.09
 ]]
+
+-- $USE libs/path
+
+local debug = true
+
+local loading = LoadImage("LoadingAnalysing.png");HotCenter(loading)
+
+function PutInList(d)
+    -- locals
+    local ud=d:upper()
+    local addicon
+    local havedirs={}
+    
+    -- Directories
+    for k,_ in spairs(wjcr.entries) do
+        local dir=ExtractDir(k)
+        if debug then print(string.char(27).."[33mFound dir:  "..string.char(27).."[0m"..dir) end
+        if not havedirs[dir] then 
+           havedirs[dir]=true
+           if debug then print(string.char(27).."[34mAdded dir:  "..string.char(27).."[0m"..dir) end
+        end
+    end    
+    
+    -- Files
+    for k,e in spairs(wjcr.entries) do -- If I don't do it this way, all directories would be at the bottom, but I want them on top!
+        if ExtractDir(k)==ud then
+           boxes.files:Add(StripDir(e.entry),addicon)
+           if debug then print(string.char(27).."[32mAdded file: "..string.char(27).."[0m"..e.entry) end
+        end 
+    end
+end
+
 function maan.accept(file,filetype)
+    -- Loading
+    love.graphics.clear()
+    local w,h=love.graphics.getDimensions()
+    DrawImage(loading,w/2,h/2)
+    love.graphics.present()
     -- Debug
     print("Accepted "..filetype..": "..file) -- debug!
     -- Read the JCR file
@@ -32,7 +69,11 @@ function maan.accept(file,filetype)
        throw("Reading JCR file failed\n\n"..JCR_Error)
        return
     end
+    -- Relation check
+    
     -- Put everything in the file list gadgets
+    PutInList("")
+    
     
     -- Show the file list screen
     GoScreen('fileviewer')
