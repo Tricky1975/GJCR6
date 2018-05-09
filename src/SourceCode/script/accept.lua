@@ -20,13 +20,20 @@
 		
 	Exceptions to the standard GNU license are available with Jeroen's written permission given prior 
 	to the project the exceptions are needed for.
-Version: 18.05.08
+Version: 18.05.09
 ]]
 function maan.accept(file,filetype)
+    -- Debug
     print("Accepted "..filetype..": "..file) -- debug!
+    -- Read the JCR file
     wjcr = JCR_Dir(file)
+    -- error handling
     if not wjcr then
        throw("Reading JCR file failed\n\n"..JCR_Error)
        return
     end
+    -- Put everything in the file list gadgets
+    
+    -- Show the file list screen
+    GoScreen('fileviewer')
 end    
