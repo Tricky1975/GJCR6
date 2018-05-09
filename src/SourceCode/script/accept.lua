@@ -29,6 +29,17 @@ local debug = true
 
 local loading = LoadImage("LoadingAnalysing.png");HotCenter(loading)
 local ficon_directory=LoadImage("ficons/directory.png"); assert(ficon_directory and ficon_directory.images,"error in loading needed icon")
+local ficons={}
+local ftypes={OGG='audio',WAV='audio',MP3='audio',FLAC='audio',M4A='audio',
+              PNG='image',JPG='image',JPEG='image',BMP='image',GIF='image',
+              GINI="GINI Is Not INI",
+              LUA="Lua script"
+              }
+for _,v in pairs(ftypes) do
+    print("Loading icon:"..v)
+    ficons[v]=ficons[v] or LoadImage("ficons/"..v..".png")
+    assert(ficons[v],"No icon for file type "..v)
+end    
 
 function PutInList(d)
     -- locals
@@ -60,8 +71,11 @@ function PutInList(d)
     -- Files
     for k,e in spairs(wjcr.entries) do -- If I don't do it this way, all directories would be at the bottom, but I want them on top!
         if ExtractDir(k)==ud then
+           addicon=nil
+           local ex=ExtractExt(k)
+           if ftypes[ex] then addicon=ficons[ftypes[ex]] end
            boxes.files:Add(StripDir(e.entry),addicon)
-           if debug then print(string.char(27).."[32mAdded file: "..string.char(27).."[0m"..e.entry) end
+           if debug then print(string.char(27).."[32mAdded file: "..string.char(27).."[0m"..e.entry.." ("..ex..")") end
         end 
     end
 end
