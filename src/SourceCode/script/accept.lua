@@ -68,8 +68,8 @@ function PutInList(d)
                havedirs[dir]=true
                --local pdir = left(dir,#dir-1) -- no longer needed
                if ExtractDir(dir)==ud then  
-                  boxes.files:Add(StripDir(dir.."/"),ficon_directory)
-                  if debug then print(string.char(27).."[34mAdded dir:  "..string.char(27).."[0m"..dir) end
+                  boxes.files:Add(StripDir(dir).."/",ficon_directory)
+                  if debug then print(string.char(27).."[34mAdded dir:  "..string.char(27).."[0m"..StripDir(dir)) end
                end
            end
         end
