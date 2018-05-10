@@ -1,6 +1,6 @@
 --[[
-	JCR6 for LOVE
-	Main file
+	JCR6
+	Callbacks
 	
 	
 	
@@ -22,10 +22,22 @@
 	to the project the exceptions are needed for.
 Version: 18.05.10
 ]]
-
 -- $USE libs/maneschijn
--- $use script/accept
--- $USE script/gui
--- $USE script/callbacks
 
+-- $IF IGNORE
+local maan={}
+-- $FI
+
+function maan.filelist_Action(gadget,selections,keuze)
+    local f=gadget:ItemText(keuze)
+    if right(f,1)~="/" then return end
+    if f=="../" then
+       local pdf=ExtractDir(left(f,#f-1))
+       PutInList(pdf)
+       return
+    end
+    wcurrentdir=wcurrentdir..f
+    gadget:Clear()
+    PutInList(wcurrentdir)
+end
 

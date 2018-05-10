@@ -20,7 +20,7 @@
 		
 	Exceptions to the standard GNU license are available with Jeroen's written permission given prior 
 	to the project the exceptions are needed for.
-Version: 18.05.09
+Version: 18.05.10
 ]]
 local gui = {
 
@@ -69,7 +69,7 @@ local gui = {
 }
 guiscreens=gui.kids.screens.kids -- These are the "real" work screens
 boxes=guiscreens.fileviewer.kids
-boxes.files = { x=0,y="5%",h="80%",w="95%",kind="listbox",bg=0.05,br=0.05,bb=0.05,alpha=.5,dbgid='Files of a JCR6 file',allowicons=true}
+boxes.files = { id='filelist', x=0,y="5%",h="80%",w="95%",kind="listbox",bg=0.05,br=0.05,bb=0.05,alpha=.5,dbgid='Files of a JCR6 file',allowicons=true,multiselect=true,Select=function(self) print(string.char(27).."[32msomething is selected in: "..self.dbgid..string.char(27).."[0m") end}
 
 
 function GoScreen(screen)

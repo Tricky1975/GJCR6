@@ -20,7 +20,7 @@
 		
 	Exceptions to the standard GNU license are available with Jeroen's written permission given prior 
 	to the project the exceptions are needed for.
-Version: 18.05.09
+Version: 18.05.10
 ]]
 
 -- $USE libs/path
@@ -42,12 +42,19 @@ for _,v in pairs(ftypes) do
 end    
 
 function PutInList(d)
+    -- Current directory
+    wcurrentdir=d
+    
     -- locals
     local ud=d:upper()
     local addicon
     local havedirs={}
     
     boxes.files:Clear()
+    -- Parent
+    if d~="" then
+       boxes.files:Add("../",ficon_parent)
+    end   
     -- Directories
     for k,_ in spairs(wjcr.entries) do
         local fulldir=ExtractDir(k)
@@ -97,7 +104,7 @@ function maan.accept(file,filetype)
     end
     -- Relation check
     
-    -- Put everything in the file list gadgets
+    -- Put everything in the file list gadgets        
     PutInList("")
     
     
