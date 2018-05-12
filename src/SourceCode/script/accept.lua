@@ -20,7 +20,7 @@
 		
 	Exceptions to the standard GNU license are available with Jeroen's written permission given prior 
 	to the project the exceptions are needed for.
-Version: 18.05.10
+Version: 18.05.12
 ]]
 
 -- $USE libs/path
@@ -33,7 +33,8 @@ local ficons={}
 local ftypes={OGG='audio',WAV='audio',MP3='audio',FLAC='audio',M4A='audio',
               PNG='image',JPG='image',JPEG='image',BMP='image',GIF='image',
               GINI="GINI Is Not INI",
-              LUA="Lua script"
+              LUA="Lua script",
+              MD="Markdown document"
               }
 for _,v in pairs(ftypes) do
     print("Loading icon:"..v)
@@ -42,7 +43,7 @@ for _,v in pairs(ftypes) do
 end    
 
 function FileType(file)
-    e = ExtractExt(file):upper()
+    local e = ExtractExt(file):upper()
     return ftypes[e] or "unknown"
 end    
 

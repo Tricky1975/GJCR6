@@ -20,7 +20,7 @@
 		
 	Exceptions to the standard GNU license are available with Jeroen's written permission given prior 
 	to the project the exceptions are needed for.
-Version: 18.05.10
+Version: 18.05.12
 ]]
 
 local function onefileonly(self)
@@ -82,7 +82,8 @@ boxes.files    = { id='filelist', x=0,y="5%",h="80%",w="95%",kind="listbox",bg=0
 boxes.fbuttons = { id='filebuttons', x="-22%", y="10.5%", kind='pivot',w="20%%",h=25, kids = {
      {id='fileinfo'   ,kind='button',x=0,y=0,w='100%',h=23,caption='Info',autoenable=onefileonly},
      {id='fileview'   ,kind='button',x=0,y=25,w='100%',h=23,caption='View',autoenable=onefileonly},
-     {id='fileextract',kind='button',x=0,y=50,w='100%',h=23,caption='Extract',autoenable=needsselections}
+     {id='fileextract',kind='button',x=0,y=50,w='100%',h=23,caption='Extract',autoenable=needsselections},
+     {id='fileexall'  ,kind='button',x=0,y=75,w='100%',h=23,caption='Extract all'},
 }}
 
 

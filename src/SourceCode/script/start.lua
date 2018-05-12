@@ -20,7 +20,7 @@
 		
 	Exceptions to the standard GNU license are available with Jeroen's written permission given prior 
 	to the project the exceptions are needed for.
-Version: 18.05.10
+Version: 18.05.12
 ]]
 
 -- $USE libs/maneschijn
@@ -29,3 +29,4 @@ Version: 18.05.10
 -- $USE script/callbacks
 
 
+love.filesystem.createDirectory("SwapView")

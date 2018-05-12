@@ -20,7 +20,7 @@
 		
 	Exceptions to the standard GNU license are available with Jeroen's written permission given prior 
 	to the project the exceptions are needed for.
-Version: 18.05.10
+Version: 18.05.12
 ]]
 -- $USE libs/maneschijn
 -- $USE libs/path
@@ -30,6 +30,7 @@ local maan={}
 -- $FI
 
 function maan.filelist_Action(gadget,selections,keuze)
+    if not keuze then return end
     local f=gadget:ItemText(keuze)
     if right(f,1)~="/" then return end
     if f=="../" then
@@ -79,4 +80,18 @@ function maan.fileinfo_Action(gadget)
     
     -- Output result
     notify(mb)        
+end
+
+
+function maan.fileview_Action(gadget)
+    local s = boxes.files:selecteditems()
+    local i = s[1]
+    if not i then return end
+    local f = wcurrentdir..boxes.files:ItemText(i)
+    if suffixed(f,"/") then
+       maan.fileinfo_Action(gadget)
+       return
+    end
+    -- $USE script/view
+    view(f)   
 end
