@@ -23,6 +23,7 @@
 Version: 18.05.10
 ]]
 -- $USE libs/maneschijn
+-- $USE libs/path
 
 -- $IF IGNORE
 local maan={}
@@ -41,3 +42,41 @@ function maan.filelist_Action(gadget,selections,keuze)
     PutInList(wcurrentdir)
 end
 
+function maan.fileinfo_Action(gadget)
+    local s = boxes.files:selecteditems()
+    local i = s[1]
+    if not i then return end
+    local f = wcurrentdir..boxes.files:ItemText(i)
+    if suffixed(f,"/") then
+       local cnt=0
+       for k,_ in pairs(wjcr.entries) do
+           if ExtractDir(k)==f then cnt = cnt + 1 end
+       end
+       notify("Directory:\t"..f.."\n\nFiles:\t"..cnt)
+       return
+    end
+    -- Gather entry data
+    local fields = {
+        {'File:\t\t','entry','%s'},
+        {'Type:\t',"!TYPE",'%s'},
+        {'Main:\t','mainfile','%s'},
+        {'Size:\t\t','size','%9d'},
+        {'Comp:\t','compressedsize','%9d'},
+        {'Ratio:\t','!RATIO','%3d%%'},
+        {'Algorithm:\t','storage','%s'},
+        {'Offset:\t','offset','%X'},
+        {'Author:\t',"author",'%s'},
+        {"\nNotes:\n","notes","%s"}}
+    local mb=""
+    local entry=wjcr.entries[f:upper()]    
+    for fld in each(fields) do
+        local value=entry[fld[2]]
+        if fld[2]=="!RATIO" then value=math.floor(((entry.compressedsize/entry.size)*100)+.5) end
+        if fld[2]=='!TYPE' then value=FileType(f) end
+        mb=mb..fld[1]..fld[3]:format(value).."\n"
+    end
+    -- Gather relations (aliases)
+    
+    -- Output result
+    notify(mb)        
+end

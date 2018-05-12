@@ -41,6 +41,11 @@ for _,v in pairs(ftypes) do
     assert(ficons[v],"No icon for file type "..v)
 end    
 
+function FileType(file)
+    e = ExtractExt(file):upper()
+    return ftypes[e] or "unknown"
+end    
+
 function PutInList(d)
     -- Current directory
     wcurrentdir=d

@@ -22,6 +22,15 @@
 	to the project the exceptions are needed for.
 Version: 18.05.10
 ]]
+
+local function onefileonly(self)
+      return #(boxes.files:selecteditems() or 'onetwothreefour')==1
+end
+
+local function needsselections(self)      
+     return #(boxes.files:selecteditems() or '')>=1
+end
+
 local gui = {
 
       kind='quad',
@@ -69,7 +78,12 @@ local gui = {
 }
 guiscreens=gui.kids.screens.kids -- These are the "real" work screens
 boxes=guiscreens.fileviewer.kids
-boxes.files = { id='filelist', x=0,y="5%",h="80%",w="95%",kind="listbox",bg=0.05,br=0.05,bb=0.05,alpha=.5,dbgid='Files of a JCR6 file',allowicons=true,multiselect=true,Select=function(self) print(string.char(27).."[32msomething is selected in: "..self.dbgid..string.char(27).."[0m") end}
+boxes.files    = { id='filelist', x=0,y="5%",h="80%",w="95%",kind="listbox",bg=0.05,br=0.05,bb=0.05,alpha=.5,dbgid='Files of a JCR6 file',allowicons=true,multiselect=true,Select=function(self) print(string.char(27).."[32msomething is selected in: "..self.dbgid..string.char(27).."[0m") end}
+boxes.fbuttons = { id='filebuttons', x="-22%", y="10.5%", kind='pivot',w="20%%",h=25, kids = {
+     {id='fileinfo'   ,kind='button',x=0,y=0,w='100%',h=23,caption='Info',autoenable=onefileonly},
+     {id='fileview'   ,kind='button',x=0,y=25,w='100%',h=23,caption='View',autoenable=onefileonly},
+     {id='fileextract',kind='button',x=0,y=50,w='100%',h=23,caption='Extract',autoenable=needsselections}
+}}
 
 
 function GoScreen(screen)
